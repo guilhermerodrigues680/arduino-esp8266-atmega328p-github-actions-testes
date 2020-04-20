@@ -15,9 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: echo "::debug ::Entered octocatAddition method"
-    - run: echo "::warn ::Entered octocatAddition method"
-    - run: echo "::error ::Entered octocatAddition method"
+    - run: echo "::debug::message de debug"
+    - run: echo "::warning::Entered octocatAddition method"
+    - run: echo "::error::Entered octocatAddition method"
 
     # - name: Build the Docker image
     #   run: docker build . --file testes.Dockerfile --tag testes:latest
