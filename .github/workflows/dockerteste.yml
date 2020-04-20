@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image Arduino ESP8266
-      run: docker build . --file parduino-esp8266.Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file arduino-esp8266.Dockerfile --tag my-image-name:$(date +%s)
     
     - name: Build the Docker image PlatformIO
       run: docker build . --file platformio.Dockerfile --tag my-image-name:$(date +%s)
