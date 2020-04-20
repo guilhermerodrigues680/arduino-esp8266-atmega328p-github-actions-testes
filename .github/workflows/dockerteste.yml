@@ -39,4 +39,4 @@ jobs:
       with:
         name: logs
       # - shell: bash
-      run: cat logs/logs/image-size.txt
+      - run: cat logs/logs/image-size.txt
