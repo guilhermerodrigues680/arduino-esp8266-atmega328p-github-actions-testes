@@ -1,0 +1,109 @@
+# Orientações:
+# Altere a variavel de ambiente PATH_INO_FILE para o caminho do programa
+
+name: Compilação
+
+on:
+  push:
+    branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
+  # release:
+  #   types: [published, created, edited]
+
+jobs:
+  build:
+    name: Compilando NodeMCUeGoPro.ino
+    runs-on: ubuntu-18.04
+    env: 
+      PATH_INO_FILE: Interligando-NodeMCU-e-GoPro/NodeMCUeGoPro/NodeMCUeGoPro.ino
+    steps:
+      
+      # Download e instação da Arduino IDE para ultilizar as Arduino CLI
+      - name: Baixar e instalar Arduino IDE 1.8.12 64bits
+        run: |
+          wget -q https://downloads.arduino.cc/arduino-1.8.12-linux64.tar.xz
+          sudo mv arduino-1.8.12-linux64.tar.xz /opt
+          cd /opt
+          sudo tar -xf arduino-1.8.12-linux64.tar.xz
+          cd arduino-1.8.12
+          sudo ./install.sh
+          which arduino
+          ls -la $(which arduino) | grep 'arduino'
+
+      # Instalação das placas ESP8266 no Arduino IDE
+      - name: Instalar Placa ESP8266 no Arduino
+        run: |
+          printf "\n Local do Sketchbook: \n"
+          arduino --get-pref | grep 'ske'
+          printf "\n"
+          cd /home/runner/Arduino
+          mkdir hardware
+          cd hardware
+          mkdir esp8266com
+          cd esp8266com
+          printf "\n Clonando o repositorio do esp8266 \n"
+          git clone https://github.com/esp8266/Arduino.git esp8266
+          cd esp8266
+          printf "\n Alterando para versao 2.6.3 \n"
+          git checkout 2.6.3
+          printf "\n Baixando os sub-modulos \n"
+          git submodule update --init
+          printf "\n Instalando as Tools \n"
+          cd tools
+          python3 get.py
+          printf "\n ESP8266 Instlado no Arduino IDE! \n"
+
+      # Checkout para $GITHUB_WORKSPACE para o Actions acessar o repositorio
+      - uses: actions/checkout@v2
+
+      - name: Exibir o path atual
+        run: |
+          pwd
+          ls -la
+
+      # Compilando o codigo para o NodeMCU
+      - name: Compliando o programa
+        run: |
+          mkdir -p __temp_comp
+          # arduino -v --board esp8266com:esp8266:nodemcu --verify $PATH_INO_FILE
+          arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino > __temp_comp/output.txt 2>&1
+
+          cd __temp_comp
+          grep -E '[a-zA-Z0-9]*:[0-9]*:[0-9]*:[[:blank:]]*[a-zA-Z0-9]*[[:blank:]]error:' output.txt > errors.txt
+
+          arquivo=()
+          linha=()
+          coluna=()
+          while IFS= read -r LINE; do
+              arquivo+=$(echo "$LINE" | cut -d ':' -f 1)
+              linha+=$(echo "$LINE" | cut -d ':' -f 2)
+              coluna+=$(echo "$LINE" | cut -d ':' -f 3)
+          done < errors.txt
+
+          for i in '$(seq "${#arquivo[@]}")'; do echo "${arquivo[i]} ${linha[i]} ${coluna[i]}"; done
+          for i in "$(seq 2)"; do echo "${arquivo[$i]} ${linha[$i]} ${coluna[$i]}"; done
+          
+          echo "${#arquivo[@]}"
+          seq "${#arquivo[@]}"
+          
+          
+          OUTPUT=$(arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino 2>&1)
+          ERROS=$(echo "$OUTPUT" | grep -E '[a-zA-Z0-9]*:[0-9]*:[0-9]*:[[:blank:]]*[a-zA-Z0-9]*[[:blank:]]error:')
+          echo $ERROS | cut -d ':' -f 1
+
+          arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino > tempOutput.txt 2>&1 
+          grep -E '[a-zA-Z0-9]*:[0-9]*:[0-9]*:[[:blank:]]*[a-zA-Z0-9]*[[:blank:]]error:' tempOutput.txt
+
+          while IFS= read -r LINE; do
+              echo "12 $LINE"
+          done < tempOutput.txt
+
+
+
+
+# Referencias:
+# https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
+# https://arduino-esp8266.readthedocs.io/en/latest/installing.html
+# https://gist.github.com/bergie/0dcdf0730765602ccfb4cf3a61b92989
+# https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#defaults
