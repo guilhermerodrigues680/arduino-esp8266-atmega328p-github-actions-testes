@@ -46,3 +46,48 @@ git
 
 docker pull debian:stretch-slim
 docker pull ubuntu:18.04
+
+
+--------
+
+arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino
+arduino -v --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino
+
+find . -name platform.txt
+
+
+NodeMCUeGoPro:9:62: fatal error: WiFiUDP.h: No such file or directory
+ #include <WiFiUDP.h> //Biblioteca necessaria para Wake On Lan
+                                                              ^^
+compilation terminated.
+
+
+OUTPUT=$(sh -c 'arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino')
+
+arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino > g2.txt 2>&1
+
+bash cmd.sh > g.txt 2>&1 
+
+cat g2.txt | grep '/\^/'
+# cat g2.txt | grep -E ':[[:alnum:]]+:[[:alnum:]]+:[[:blank:]]e*r*r*o*r:*'
+https://regex101.com/
+ERROS=$(cat g2.txt | grep -E '[a-zA-Z0-9]*:[0-9]*:[0-9]*:[[:blank:]]*[a-zA-Z0-9]*[[:blank:]]error:')
+
+echo $ERROS | cut -d ':' -f 1
+
+------------------------------------------------------
+
+
+Picked up JAVA_TOOL_OPTIONS: 
+Loading configuration...
+Initializing packages...
+Preparing boards...
+Verifying...
+NodeMCUeGoPro:6:2: error: #error "message error"
+ #error "message error"
+  ^
+NodeMCUeGoPro:9:62: fatal error: WiFiUDP.h: No such file or directory
+ #include <WiFiUDP.h> //Biblioteca necessaria para Wake On Lan
+                                                              ^
+compilation terminated.
+exit status 1
