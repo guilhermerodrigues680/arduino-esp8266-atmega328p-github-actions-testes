@@ -20,6 +20,7 @@ files_add=(
     anotacoes.txt
     arduino-esp8266.Dockerfile
     automacao-commits.sh
+    generate-anotations.py
     platformio.Dockerfile
     testes.Dockerfile
 )
