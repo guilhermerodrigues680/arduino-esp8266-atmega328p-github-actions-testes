@@ -47,7 +47,7 @@ git push $repo_name $branch_name
 git status
 git log --oneline -n 3 | cat
 
-t_aguarde=($(seq 0 1 5))
+t_aguarde=($(seq 5 -1 0))
 for t in "${t_aguarde[@]}";
 do
     echo "Abrindo GitHub em $t seg..."
