@@ -38,9 +38,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/download-artifact@v1
-      with:
-        name: logs
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v1
+        with:
+          name: logs
     
-    - shell: bash
-      run: cat logs/logs/image-size.txt
+      - shell: bash
+        run: cat logs/logs/image-size.txt
