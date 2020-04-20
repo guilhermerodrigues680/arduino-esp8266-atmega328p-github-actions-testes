@@ -20,3 +20,6 @@ jobs:
     
     - name: Build the Docker image Testes
       run: docker build . --file testes.Dockerfile --tag my-image-name:$(date +%s)
+
+    - name: Check images size
+      run: docker images
