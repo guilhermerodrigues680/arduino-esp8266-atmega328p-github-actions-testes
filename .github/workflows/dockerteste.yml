@@ -24,7 +24,7 @@ jobs:
     - name: Print Docker image size
       run: docker images | grep "${{ matrix.dockerfile }}"
 
-    - name: Salvar log do tamanho da imagem
+    # - name: Salvar log do tamanho da imagem
     - run: mkdir -p artifacts/logs
     - run: echo $(docker images | grep "${{ matrix.dockerfile }}") >> artifacts/logs/image-size.txt
     - uses: actions/upload-artifact@v1
@@ -40,13 +40,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: pwd && ls
-    
-    - name: ler log
+    # - name: ler log
     - uses: actions/download-artifact@v1
       with:
         name: logs
         path: artifacts
-    
-    - name: ler log
+    # - name: ler log
     - run: ls
     # - run: cat logs/logs/image-size.txt
