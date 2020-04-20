@@ -25,10 +25,10 @@ jobs:
       run: echo "::error::Esta é uma anotação de error"
 
     - name: warning-file-annotation
-      run: echo "::error file=.github/workflows/dockerteste.yml,line=5,col=5::Remova este comentario"
+      run: echo "::warning file=.github/workflows/msgteste.yml,line=28,col=7::Linkando warning"
 
     - name: error-file-annotation
-      run: echo "::error file=.github/workflows/dockerteste.yml,line=17,col=9::Remova tambem este comentario"
+      run: echo "::error file=.github/workflows/msgteste.yml,line=31,col=7::Linkando error"
 
     # - name: Build the Docker image
     #   run: docker build . --file testes.Dockerfile --tag testes:latest
