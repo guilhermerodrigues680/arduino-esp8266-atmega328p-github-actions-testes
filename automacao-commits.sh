@@ -16,6 +16,8 @@ commit_msg="Update GitHub Workflow $(date)"
 branch_name="master"
 repo_name="origin-testes"
 
+git status
+
 for file in "${files_add[@]}";
 do
     echo "git add $file"
@@ -29,3 +31,6 @@ git commit -m "$commit_msg"
 echo "git push $repo_name $branch_name"
 git remote get-url $repo_name
 git push $repo_name $branch_name
+
+git status
+git log --oneline -n 3
