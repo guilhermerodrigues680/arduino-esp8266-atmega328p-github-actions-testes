@@ -1,0 +1,22 @@
+name: Teste CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  # Testes
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build the Docker image
+      run: docker build . --file testes.Dockerfile --tag testes:latest
+
+    - name: Print Docker image size
+      run: docker images | grep testes
