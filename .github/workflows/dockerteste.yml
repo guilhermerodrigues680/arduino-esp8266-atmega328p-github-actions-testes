@@ -7,19 +7,41 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  # 01
+  dockerfiles-arduino-esp8266:
+    name: Testando Dockerfile Arduino ESP8266
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image Arduino ESP8266
-      run: docker build . --file arduino-esp8266.Dockerfile --tag my-image-name:$(date +%s)
-    
-    - name: Build the Docker image PlatformIO
-      run: docker build . --file platformio.Dockerfile --tag my-image-name:$(date +%s)
-    
-    - name: Build the Docker image Testes
-      run: docker build . --file testes.Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file arduino-esp8266.Dockerfile --tag arduino-esp8266:latest
 
-    - name: Check images size
+    - name: Check image size
+      run: docker images
+
+  # 02
+  dockerfiles-platformio:
+    name: Testando Dockerfile PlatformIO
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image PlatformIO
+      run: docker build . --file platformio.Dockerfile --tag platformio:latest
+
+    - name: Check image size
+      run: docker images
+
+  # 03
+  dockerfiles-test:
+    name: Testando Dockerfile Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image Testes
+      run: docker build . --file testes.Dockerfile --tag testes:latest
+
+    - name: Check image size
       run: docker images
