@@ -15,9 +15,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: echo "::debug::message de debug"
-    - run: echo "::warning::Entered octocatAddition method"
-    - run: echo "::error::Entered octocatAddition method"
+    - name: debug-annotation
+      run: echo "::debug::Esta é uma anotação de debug"
+
+    - name: warning-annotation
+      run: echo "::warning::Esta é uma anotação de warning"
+
+    - name: error-annotation
+      run: echo "::error::Esta é uma anotação de error"
+
+    - name: warning-file-annotation
+      run: echo "::error file=.github/workflows/dockerteste.yml,line=5,col=5::Remova este comentario"
+
+    - name: error-file-annotation
+      run: echo "::error file=.github/workflows/dockerteste.yml,line=17,col=9::Remova tambem este comentario"
 
     # - name: Build the Docker image
     #   run: docker build . --file testes.Dockerfile --tag testes:latest
