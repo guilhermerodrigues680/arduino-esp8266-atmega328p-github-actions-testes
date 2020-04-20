@@ -47,6 +47,8 @@ git push $repo_name $branch_name
 git status
 git log --oneline -n 3 | cat
 
+sleep 2
+
 github_link="https://github.com/guilhermerodrigues680/arduino-esp8266-atmega328p-github-actions-testes"
 github_link+="/commit/$(git rev-parse --short HEAD)"
 echo "open -a /Applications/Firefox.app -g $github_link"
