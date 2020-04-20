@@ -25,5 +25,7 @@ done
 echo "git commit -m \"$commit_msg\""
 git commit -m "$commit_msg"
 
-# echo "git push $repo_name $branch_name"
-# git push $repo_name $branch_name
+
+echo "git push $repo_name $branch_name"
+git remote get-url $repo_name
+git push $repo_name $branch_name
