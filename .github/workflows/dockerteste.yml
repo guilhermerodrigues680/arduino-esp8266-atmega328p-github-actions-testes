@@ -34,15 +34,19 @@ jobs:
 
   print-artifacts:
     name: Imprime Logs
-    needs: [ build ]
+    # needs: [ build ]
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v2
+    - run: pwd && ls
+    
+    - name: ler log
     - uses: actions/download-artifact@v1
       with:
         name: logs
         path: artifacts
-
+    
+    - name: ler log
     - run: ls
     # - run: cat logs/logs/image-size.txt
