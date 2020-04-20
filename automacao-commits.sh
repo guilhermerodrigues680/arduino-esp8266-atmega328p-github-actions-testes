@@ -3,6 +3,16 @@
 # chmod 744 -> Owner Group Public -> -rwxr--r--
 # ARRAYS: https://linuxconfig.org/how-to-use-arrays-in-bash-script
 
+# Captura de erros
+red='\e[0;31m'
+no_color='\e[0m'
+err_report() {
+    printf "${red}Erro em '$0' na linha $1. Encerrando Script.${no_color}\n"
+    exit 1
+}
+trap 'err_report $LINENO' ERR
+
+
 files_add=(
     # .gitignore
     anotacoes.txt
@@ -34,3 +44,8 @@ git push $repo_name $branch_name
 
 git status
 git log --oneline -n 3 | cat
+
+github_link="https://github.com/guilhermerodrigues680/arduino-esp8266-atmega328p-github-actions-testes"
+github_link+="/commit/$(git rev-parse --short HEAD)"
+echo "open -a /Applications/Firefox.app -g $github_link"
+open -a /Applications/Firefox.app -g "$github_link"
