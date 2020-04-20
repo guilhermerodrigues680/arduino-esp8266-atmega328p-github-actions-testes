@@ -1,0 +1,40 @@
+arduino --verify Blink.ino
+
+arduino --board arduino:avr:uno --verify Blink.ino
+
+arduino --board arduino:avr:mega --verify Blink.ino
+
+arduino --board arduino:avr:uno --verbose-build --verify Blink.ino
+
+arduino --board arduino:avr:uno -v --verify Blink.ino
+
+
+target_platform=avr
+board=uno
+software=ARDUINO
+
+
+arduino --get-pref
+
+arduino --get-pref | grep 'target_p\|board\|software'
+
+G=$(arduino --get-pref)
+echo $G | xargs -n 1 | grep board
+
+sketchbook.path=/root/Arduino
+
+rm -rf ~/.arduino15/
+
+----
+arduino --pref "boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json" --save-prefs
+
+arduino --get-pref | grep 'board'
+----
+
+arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro.ino
+arduino -v --board esp8266com:esp8266:nodemcu --verify /root/Interligando-NodeMCU-e-GoPro/NodeMCUeGoPro/NodeMCUeGoPro.ino
+
+INSTALAR
+zv
+python3
+git
