@@ -42,10 +42,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: nome
       run: |
-      apt install tree -y
-      pwd
-      ls
-      tree
+        apt install tree -y
+        pwd
+        ls
+        tree
     # - name: ler log
     - uses: actions/download-artifact@v1
       with:
