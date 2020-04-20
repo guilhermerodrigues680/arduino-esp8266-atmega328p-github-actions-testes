@@ -5,6 +5,7 @@
 
 # Captura de erros
 red='\e[0;31m'
+green='\e[0;32m'
 no_color='\e[0m'
 err_report() {
     printf "${red}Erro em '$0' na linha $1. Encerrando Script.${no_color}\n"
@@ -49,3 +50,5 @@ github_link="https://github.com/guilhermerodrigues680/arduino-esp8266-atmega328p
 github_link+="/commit/$(git rev-parse --short HEAD)"
 echo "open -a /Applications/Firefox.app -g $github_link"
 open -a /Applications/Firefox.app -g "$github_link"
+
+printf "${green}Commits enviado sem erros :) ${no_color}\n"
