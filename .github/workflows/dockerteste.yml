@@ -33,10 +33,13 @@ jobs:
         path: artifacts
 
   print-artifacts:
+    name: Imprime Logs
+    needs: [ build ]
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Imprime os resultados artifacts
-      needs: [ build ]
-      uses: actions/download-artifact@v1
+    - uses: actions/download-artifact@v1
       with:
         name: logs
-      - shell: bash
-      - run: cat logs/logs/image-size.txt
+    - run: cat logs/logs/image-size.txt
