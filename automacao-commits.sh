@@ -15,7 +15,7 @@ trap 'err_report $LINENO' ERR
 
 
 files_add=(
-    .github/*
+    .github/workflows/*
     # .gitignore
     anotacoes.txt
     arduino-esp8266.Dockerfile
