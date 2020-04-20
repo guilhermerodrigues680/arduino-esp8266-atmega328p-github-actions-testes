@@ -31,4 +31,4 @@ jobs:
       with:
         name: my-artifact
         # path: path/to/artifact
-        path: path/to/artifact
+        path: path
