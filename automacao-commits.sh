@@ -33,4 +33,4 @@ git remote get-url $repo_name
 git push $repo_name $branch_name
 
 git status
-git log --oneline -n 3
+git log --oneline -n 3 | cat
