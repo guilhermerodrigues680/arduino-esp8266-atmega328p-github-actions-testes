@@ -24,11 +24,19 @@ jobs:
     - name: Print Docker image size
       run: docker images | grep "${{ matrix.dockerfile }}"
 
-    - uses: actions/checkout@v1
-    - run: mkdir -p path/to/artifact
-    - run: echo hello > path/to/artifact/world.txt
+    - name: Salvar log do tamanho da imagem
+    - run: mkdir -p artifacts/logs
+    - run: echo $(docker images | grep "${{ matrix.dockerfile }}") >> artifacts/logs/image-size.txt
     - uses: actions/upload-artifact@v1
       with:
-        name: my-artifact
-        # path: path/to/artifact
-        path: path
+        name: logs
+        path: artifacts
+
+  print-artifacts:
+    - name: Imprime os resultados artifacts
+      needs: [ build ]
+      uses: actions/download-artifact@v1
+      with:
+        name: logs
+      # - shell: bash
+      run: cat logs/logs/image-size.txt
