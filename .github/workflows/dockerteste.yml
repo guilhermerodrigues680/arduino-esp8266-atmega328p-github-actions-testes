@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
         # Somente nome, ex: <nome>.Dockerfile
-        # dockerfile: [arduino-esp8266, platformio, testes ]
-        dockerfile: [ platformio, testes ]
+        dockerfile: [arduino-esp8266, platformio, testes ]
+        # dockerfile: [ platformio, testes ]
 
     steps:
     - uses: actions/checkout@v2
