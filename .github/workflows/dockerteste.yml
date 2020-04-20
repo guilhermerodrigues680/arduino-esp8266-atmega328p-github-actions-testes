@@ -58,7 +58,8 @@ jobs:
       run: |
         pwd
         tree
-        ls artifacts/logs/ | xargs -n 1 sh -c 'echo "\n\n------- $0\n"; cat $0'
+        cd artifacts/logs/
+        ls | xargs -n 1 sh -c 'echo "\n\n------- $0\n"; cat $0'
 
     # Modelo de print-artifacts
     # print-artifacts:
