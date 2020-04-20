@@ -49,7 +49,7 @@ git log --oneline -n 3 | cat
 
 printf "${green}Commits enviados sem erros :) ${no_color}\n"
 
-t_aguarde=($(seq 5 -1 0))
+t_aguarde=($(seq 4 -1 0))
 for t in "${t_aguarde[@]}";
 do
     echo "Abrindo GitHub em $t seg..."

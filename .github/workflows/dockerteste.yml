@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
         # Somente nome, ex: <nome>.Dockerfile
-        # dockerfile: [arduino-esp8266, platformio, testes ]
-        dockerfile: [ testes ]
+        dockerfile: [arduino-esp8266, platformio, testes ]
+        # dockerfile: [ testes ]
 
     steps:
     - uses: actions/checkout@v2
@@ -45,12 +45,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: nome
-      run: |
-        sudo apt install tree -y
-        pwd
-        ls
-        tree
+    - name: Instalar o tree
+      run: sudo apt install tree -y
 
     - name: Baixar logs
       uses: actions/download-artifact@v1
@@ -58,9 +54,9 @@ jobs:
         name: logs
         path: artifacts
     
-    - name: ler log
+    - name: Ler log
       run: |
-        # ls
+        pwd
         tree
         cat artifacts/logs/image-size.txt
 
