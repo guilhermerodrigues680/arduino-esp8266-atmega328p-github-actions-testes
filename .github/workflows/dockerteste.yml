@@ -23,3 +23,9 @@ jobs:
 
     - name: Print Docker image size
       run: docker images | grep "${{ matrix.dockerfile }}"
+
+    - name: Archive production artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: log
+          path: image-size.txt
