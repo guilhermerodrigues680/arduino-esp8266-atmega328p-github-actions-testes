@@ -38,8 +38,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Imprime os resultados artifacts
     - uses: actions/download-artifact@v1
       with:
         name: logs
-    - run: cat logs/logs/image-size.txt
+    
+    - shell: bash
+      run: cat logs/logs/image-size.txt
