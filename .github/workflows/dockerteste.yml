@@ -19,42 +19,50 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Build the Docker image
       run: docker build . --file ${{ matrix.dockerfile }}.Dockerfile --tag ${{ matrix.dockerfile }}:latest
 
     - name: Print Docker image size
       run: docker images | grep "${{ matrix.dockerfile }}"
 
-    # - name: Salvar log do tamanho da imagem
-    - run: mkdir -p artifacts/logs
-    - run: echo $(docker images | grep "${{ matrix.dockerfile }}") >> artifacts/logs/image-size.txt
+    - name: Salvar no log o tamanho da imagem
+      run: |
+        mkdir -p artifacts/logs
+        echo $(docker images | grep "${{ matrix.dockerfile }}") >> artifacts/logs/image-size.txt
+
     - uses: actions/upload-artifact@v1
       with:
         name: logs
         path: artifacts
 
   print-artifacts:
-    name: Imprime Logs
+    name: Imprimir Logs
     needs: [ build ]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: nome
       run: |
         sudo apt install tree -y
         pwd
         ls
         tree
-    # - name: ler log
+
     - uses: actions/download-artifact@v1
       with:
         name: logs
         path: artifacts
+    
     - name: ler log
-      run: ls
-    # - run: cat logs/logs/image-size.txt
+      run: |
+        # ls
+        tree
+        cat logs/logs/image-size.txt
 
+    # Modelo de print-artifacts
     # print-artifacts:
     # name: Imprime Logs
     # runs-on: ubuntu-latest
