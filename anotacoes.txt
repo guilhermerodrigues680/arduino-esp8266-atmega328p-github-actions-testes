@@ -38,3 +38,11 @@ INSTALAR
 zv
 python3
 git
+
+
+
+
+#########
+
+docker pull debian:stretch-slim
+docker pull ubuntu:18.04
