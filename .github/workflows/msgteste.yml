@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: debug-annotation
-      run: echo "::debug::Esta é uma anotação de debug"
+      run: echo "::debug::Esta é uma anotação de debug (É necessario ACTIONS_STEP_DEBUG=true)"
 
     - name: warning-annotation
       run: echo "::warning::Esta é uma anotação de warning"
@@ -25,7 +25,7 @@ jobs:
       run: echo "::error::Esta é uma anotação de error"
 
     - name: debug-file-annotation
-      run: echo "::debug file=.github/workflows/msgteste.yml,line=28,col=7::Linkando debug"
+      run: echo "::debug file=.github/workflows/msgteste.yml,line=28,col=7::Linkando debug (É necessario ACTIONS_STEP_DEBUG=true)"
 
     - name: warning-file-annotation
       run: echo "::warning file=.github/workflows/msgteste.yml,line=31,col=7::Linkando warning"
