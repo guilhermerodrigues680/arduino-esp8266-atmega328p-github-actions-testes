@@ -47,7 +47,12 @@ git push $repo_name $branch_name
 git status
 git log --oneline -n 3 | cat
 
-sleep 5
+t_aguarde=($(seq 0 1 5))
+for t in "${t_aguarde[@]}";
+do
+    echo "Abrindo GitHub em $t seg..."
+    sleep 1
+done
 
 github_link="https://github.com/guilhermerodrigues680/arduino-esp8266-atmega328p-github-actions-testes"
 github_link+="/commit/$(git rev-parse --short HEAD)"
