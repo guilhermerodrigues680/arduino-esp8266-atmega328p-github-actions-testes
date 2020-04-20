@@ -38,5 +38,5 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: logs
-      # - shell: bash
+      - shell: bash
       - run: cat logs/logs/image-size.txt
