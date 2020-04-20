@@ -14,7 +14,8 @@ jobs:
     strategy:
       matrix:
         # Somente nome, ex: <nome>.Dockerfile
-        dockerfile: [arduino-esp8266, platformio, testes ]
+        # dockerfile: [arduino-esp8266, platformio, testes ]
+        dockerfile: [ testes ]
 
     steps:
     - uses: actions/checkout@v2
@@ -34,17 +35,35 @@ jobs:
 
   print-artifacts:
     name: Imprime Logs
-    # needs: [ build ]
+    needs: [ build ]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - run: pwd && ls
+    - name: nome
+      run: |
+      apt install tree -y
+      pwd
+      ls
+      tree
     # - name: ler log
     - uses: actions/download-artifact@v1
       with:
         name: logs
         path: artifacts
-    # - name: ler log
-    - run: ls
+    - name: ler log
+      run: ls
     # - run: cat logs/logs/image-size.txt
+
+    # print-artifacts:
+    # name: Imprime Logs
+    # runs-on: ubuntu-latest
+
+    # steps:
+    # - uses: actions/checkout@v2
+    # - run: pwd && ls
+    # - uses: actions/download-artifact@v1
+    #   with:
+    #     name: logs
+    #     path: artifacts
+    # - run: ls
