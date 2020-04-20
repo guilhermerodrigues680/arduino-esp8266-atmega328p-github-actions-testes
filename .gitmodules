@@ -1,0 +1,3 @@
+[submodule "Interligando-NodeMCU-e-GoPro"]
+	path = Interligando-NodeMCU-e-GoPro
+	url = https://github.com/guilhermerodrigues680/Interligando-NodeMCU-e-GoPro.git
