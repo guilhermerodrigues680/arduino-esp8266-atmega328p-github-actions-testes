@@ -51,8 +51,8 @@ jobs:
     name: Test all
     runs-on: ubuntu-latest
     strategy:
-    matrix:
-      dockerfile: [testes, platformio, arduino-esp8266]
+      matrix:
+        dockerfile: [testes, platformio, arduino-esp8266]
 
     steps:
     - uses: actions/checkout@v2
