@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker CI
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 jobs:
   # 01
   dockerfiles-arduino-esp8266:
-    name: Testando Dockerfile Arduino ESP8266
+    name: Dockerfile Arduino ESP8266
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
 
   # 02
   dockerfiles-platformio:
-    name: Testando Dockerfile PlatformIO
+    name: Dockerfile PlatformIO
     runs-on: ubuntu-latest
 
     steps:
@@ -35,7 +35,7 @@ jobs:
 
   # 03
   dockerfiles-test:
-    name: Testando Dockerfile Test
+    name: Dockerfile Test
     runs-on: ubuntu-latest
 
     steps:
