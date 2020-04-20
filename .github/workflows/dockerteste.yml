@@ -1,8 +1,8 @@
 name: Docker CI
 
 on:
-  # push:
-    # branches: [ master ]
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -14,9 +14,8 @@ jobs:
     strategy:
       matrix:
         # Somente nome, ex: <nome>.Dockerfile
-        # dockerfile: [arduino-esp8266, platformio, testes ]
+        dockerfile: [arduino-esp8266, platformio, testes ]
         # dockerfile: [ platformio, testes ]
-        dockerfile: [ testes ]
 
     steps:
     - uses: actions/checkout@v2
