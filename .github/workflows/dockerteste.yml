@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
         # Somente nome, ex: <nome>.Dockerfile
-        dockerfile: [arduino-esp8266, platformio, testes ]
-        # dockerfile: [ testes ]
+        # dockerfile: [arduino-esp8266, platformio, testes ]
+        dockerfile: [ platformio, testes ]
 
     steps:
     - uses: actions/checkout@v2
@@ -29,7 +29,7 @@ jobs:
     - name: Salvar no log o tamanho da imagem
       run: |
         mkdir -p artifacts/logs
-        echo $(docker images | grep "${{ matrix.dockerfile }}") >> artifacts/logs/image-size.txt
+        echo $(docker images | grep "${{ matrix.dockerfile }}") >> artifacts/logs/image-size-${{ matrix.dockerfile }}.txt
 
     - name: Upload logs
       uses: actions/upload-artifact@v1
