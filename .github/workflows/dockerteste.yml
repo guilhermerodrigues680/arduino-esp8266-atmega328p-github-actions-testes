@@ -58,3 +58,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build de todas imagens Docker
       run: docker build . --file ${{ matrix.dockerfile }}.Dockerfile --tag ${{ matrix.dockerfile }}:latest
+
+    - name: Check image size
+      run: docker images | grep "${{ matrix.dockerfile }}"
