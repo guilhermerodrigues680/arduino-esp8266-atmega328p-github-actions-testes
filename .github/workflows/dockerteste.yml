@@ -8,8 +8,8 @@ on:
 
 jobs:
   # Copila todos os Dockerfiles e checa o tamanho da imagem
-  dockerfiles:
-    name: Dockerfile
+  build:
+    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
