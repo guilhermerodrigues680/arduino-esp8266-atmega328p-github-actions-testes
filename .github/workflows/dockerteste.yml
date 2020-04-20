@@ -32,48 +32,17 @@ jobs:
         name: logs
         path: artifacts
 
-  # print-artifacts:
-  #   name: Imprime Logs
-  #   needs: [ build ]
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Download math result for job 1
-  #       uses: actions/download-artifact@v1
-  #       with:
-  #         name: logs
-    
-  #     - shell: bash
-  #       run: cat logs/logs/image-size.txt
-
-  job_1:
-    name: Add 3 and 7
+  print-artifacts:
+    name: Imprime Logs
+    needs: [ build ]
     runs-on: ubuntu-latest
+    
     steps:
-      - shell: bash
-        run: |
-          expr 3 + 7 > math-homework.txt
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v1
-        with:
-          name: homework
-          path: math-homework.txt
+    - uses: actions/checkout@v2
+    - uses: actions/download-artifact@v1
+      with:
+        name: logs
+        path: artifacts
 
-  job_2:
-    name: Multiply by 9
-    needs: job_1
-    runs-on: windows-latest
-    steps:
-      - name: Download math result for job 1
-        uses: actions/download-artifact@v1
-        with:
-          name: homework
-      - shell: bash
-        run: |
-          value=`cat homework/math-homework.txt`
-          expr $value \* 9 > homework/math-homework.txt
-      - name: Upload math result for job 2
-        uses: actions/upload-artifact@v1
-        with:
-          name: homework
-          path: homework/math-homework.txt
+    - run: ls
+    # - run: cat logs/logs/image-size.txt
