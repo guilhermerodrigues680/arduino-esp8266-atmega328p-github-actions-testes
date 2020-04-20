@@ -45,3 +45,16 @@ jobs:
 
     - name: Check image size
       run: docker images
+
+  #04
+  dockerfiles:
+    name: Test all
+    run-ons: ubuntu-latest
+    strategy:
+    matrix:
+      dockerfile: [testes, platformio, arduino-esp8266]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build de todas imagens Docker
+      run: docker build . --file ${{ matrix.dockerfile }}.Dockerfile --tag ${{ matrix.dockerfile }}:latest
