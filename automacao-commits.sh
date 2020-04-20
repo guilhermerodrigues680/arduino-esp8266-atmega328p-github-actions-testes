@@ -51,4 +51,4 @@ github_link+="/commit/$(git rev-parse --short HEAD)"
 echo "open -a /Applications/Firefox.app -g $github_link"
 open -a /Applications/Firefox.app -g "$github_link"
 
-printf "${green}Commits enviado sem erros :) ${no_color}\n"
+printf "${green}Commits enviados sem erros :) ${no_color}\n"
