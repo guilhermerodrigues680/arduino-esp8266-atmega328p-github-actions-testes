@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Build the Docker image
       run: docker build . --file ${{ matrix.dockerfile }}.Dockerfile --tag ${{ matrix.dockerfile }}:latest
 
@@ -60,7 +60,7 @@ jobs:
       run: |
         # ls
         tree
-        cat logs/logs/image-size.txt
+        cat artifacts/logs/image-size.txt
 
     # Modelo de print-artifacts
     # print-artifacts:
