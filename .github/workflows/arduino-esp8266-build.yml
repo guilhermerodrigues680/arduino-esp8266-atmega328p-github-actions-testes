@@ -1,0 +1,21 @@
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Compila o código arduino passado
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Hello world action step
+        uses: ./github-actions-with-docker/hello-world-docker-action # Uses an action in the action directory
+        id: hello
+        with:
+          repositorio-git: guilhermerodrigues680/Interligando-NodeMCU-e-GoPro
+          caminho: NodeMCUeGoPro/NodeMCUeGoPro.ino
+      
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
