@@ -3,7 +3,7 @@ name: build firmware
 on: [push]
 
 jobs:
-build_firmware:
+  build_firmware:
     runs-on: ubuntu-18.04
     steps:
 
