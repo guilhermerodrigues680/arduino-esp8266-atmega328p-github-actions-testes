@@ -4,15 +4,15 @@
 */
 
 #include <ESP8266WiFi.h>//Biblioteca que gerencia o WiFi.
-#error "Meu erro 1"
-#error  Meu erro 2
-#error "Meu erro 3"
-#error  Meu erro 4
-#error "Meu erro 5"
-#error  Meu erro 6
-#error "Meu erro 7"
-#error  Meu erro 8
-#error "Meu erro 9"
+// #error "Meu erro 1"
+// #error  Meu erro 2
+// #error "Meu erro 3"
+// #error  Meu erro 4
+// #error "Meu erro 5"
+// #error  Meu erro 6
+// #error "Meu erro 7"
+// #error  Meu erro 8
+// #error "Meu erro 9"
 #include <WiFiUDP.h> //Biblioteca necessaria para Wake On Lan
 const char* ssid = "Gui__GoPro"; //Rede
 const char* password = "99982965"; //Senha
