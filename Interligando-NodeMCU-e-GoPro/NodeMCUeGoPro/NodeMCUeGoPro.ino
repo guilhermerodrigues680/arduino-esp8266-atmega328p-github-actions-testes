@@ -13,7 +13,7 @@
 // #error "Meu erro 7"
 // #error  Meu erro 8
 // #error "Meu erro 9"
-#include <WiFiUDP.h> //Biblioteca necessaria para Wake On Lan
+#include <WiFiUdp.h> //Biblioteca necessaria para Wake On Lan
 const char* ssid = "Gui__GoPro"; //Rede
 const char* password = "99982965"; //Senha
 WiFiServer server(80);
