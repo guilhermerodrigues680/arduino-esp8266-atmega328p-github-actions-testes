@@ -27,7 +27,7 @@ jobs:
           cd /opt
           sudo tar -xf arduino-1.8.12-linux64.tar.xz
           cd arduino-1.8.12
-          sudo ./install.sh
+          sudo ./install.sh >/dev/null
           # which arduino
           # ls -la $(which arduino) | grep 'arduino'
 
@@ -42,14 +42,13 @@ jobs:
           git submodule update --init --quiet
           cd tools
           python3 get.py > /dev/null
-          echo "ESP8266 Instlado no Arduino IDE!"
 
       # Checkout para $GITHUB_WORKSPACE para o Actions acessar o repositorio
       - uses: actions/checkout@v2
 
       - name: Update Submodules
         run: |
-          sudo apt -qq update && sudo apt -qq install tree -y
+          sudo apt -qq update >/dev/null && sudo apt -qq install tree -y >/dev/null
           # git submodule update --init > /dev/null
           pwd
           tree
