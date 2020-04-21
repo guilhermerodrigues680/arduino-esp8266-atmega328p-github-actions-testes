@@ -23,7 +23,7 @@ RUN apt-get -q update && apt-get install -q -y git python3 && \
     rm -rf /var/lib/apt/lists/*
 
 # Print Sketchbook Default Location
-SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN arduino --get-pref | grep 'ske'
 
 # Set Sketchbook Default Location
