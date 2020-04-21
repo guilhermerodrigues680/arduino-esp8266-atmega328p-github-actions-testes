@@ -2,12 +2,12 @@ import os
 import re
 
 
-DEBUG_ON = False
+DEBUG_ON = True
 
 
 if not(DEBUG_ON):
     CMD_COMPILAR_INO = 'arduino --board esp8266com:esp8266:nodemcu --verify Interligando-NodeMCU-e-GoPro/NodeMCUeGoPro/NodeMCUeGoPro.ino 2>&1'
-    output = os.popen(CMD_COMPILAR_INO).read(
+    output = os.popen(CMD_COMPILAR_INO).read()
 else:
     output = (
         "Picked up JAVA_TOOL_OPTIONS: \n"
