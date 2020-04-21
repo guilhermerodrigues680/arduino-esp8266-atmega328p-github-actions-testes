@@ -1,0 +1,14 @@
+name: build firmware
+
+on: [push]
+
+jobs:
+build_firmware:
+    runs-on: ubuntu-18.04
+    steps:
+
+    - name: Pull Docker image
+      run: docker pull guilhermerodrigues680/arduino-esp8266-build:latest
+
+    - name: Run image
+      run: docker run -it guilhermerodrigues680/arduino-esp8266-build:latest
