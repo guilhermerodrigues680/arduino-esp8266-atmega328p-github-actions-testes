@@ -34,9 +34,8 @@ jobs:
       # Instalação das placas ESP8266 no Arduino IDE
       - name: Instalar Placa ESP8266 no Arduino
         run: |
-          cd /home/runner/Arduino
-          mkdir -p hardware/esp8266com
-          cd hardware/esp8266com
+          mkdir -p /home/runner/Arduino/hardware/esp8266com
+          cd /home/runner/Arduino/hardware/esp8266com
           git clone https://github.com/esp8266/Arduino.git esp8266 > /dev/null
           cd esp8266
           git checkout 2.6.3 > /dev/null
