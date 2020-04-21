@@ -57,10 +57,12 @@ jobs:
       # Checkout para $GITHUB_WORKSPACE para o Actions acessar o repositorio
       - uses: actions/checkout@v2
 
-      - name: Exibir o path atual
+      - name: Update Submodules
         run: |
+          apt update && apt install tree -y
+          git submodule update --init
           pwd
-          ls -la
+          tree
 
       # Compilando o codigo para o NodeMCU
       - name: Compliando o programa

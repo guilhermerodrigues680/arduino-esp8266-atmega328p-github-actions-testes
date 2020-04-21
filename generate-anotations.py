@@ -2,7 +2,7 @@ import os
 import re
 
 
-DEBUG_ON = True
+DEBUG_ON = False
 
 
 if not(DEBUG_ON):
@@ -43,3 +43,6 @@ if matchs:
 
 else:
     print('Sem resultados')
+    exit(0)
+
+exit(1)
