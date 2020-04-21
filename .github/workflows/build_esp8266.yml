@@ -46,12 +46,12 @@ jobs:
       # Checkout para $GITHUB_WORKSPACE para o Actions acessar o repositorio
       - uses: actions/checkout@v2
 
-      - name: Update Submodules
-        run: |
-          sudo apt -qq update >/dev/null && sudo apt -qq install tree -y >/dev/null
-          # git submodule update --init > /dev/null
-          pwd
-          tree
+      # - name: Update Submodules
+      #   run: |
+      #     sudo apt -qq update >/dev/null && sudo apt -qq install tree -y >/dev/null
+      #     # git submodule update --init > /dev/null
+      #     pwd
+      #     tree
 
       # Compilando o codigo para o NodeMCU
       - name: Compliando o programa
