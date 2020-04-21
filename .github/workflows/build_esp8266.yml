@@ -34,33 +34,24 @@ jobs:
       # Instalação das placas ESP8266 no Arduino IDE
       - name: Instalar Placa ESP8266 no Arduino
         run: |
-          printf "\n Local do Sketchbook: \n"
-          arduino --get-pref | grep 'ske'
-          printf "\n"
           cd /home/runner/Arduino
-          mkdir hardware
-          cd hardware
-          mkdir esp8266com
-          cd esp8266com
-          printf "\n Clonando o repositorio do esp8266 \n"
-          git clone https://github.com/esp8266/Arduino.git esp8266
+          mkdir -p hardware/esp8266com
+          cd hardware/esp8266com
+          git clone https://github.com/esp8266/Arduino.git esp8266 > /dev/null
           cd esp8266
-          printf "\n Alterando para versao 2.6.3 \n"
-          git checkout 2.6.3
-          printf "\n Baixando os sub-modulos \n"
-          git submodule update --init
-          printf "\n Instalando as Tools \n"
+          git checkout 2.6.3 > /dev/null
+          git submodule update --init > /dev/null
           cd tools
           python3 get.py > /dev/null
-          printf "\n ESP8266 Instlado no Arduino IDE! \n"
+          echo "ESP8266 Instlado no Arduino IDE!"
 
       # Checkout para $GITHUB_WORKSPACE para o Actions acessar o repositorio
       - uses: actions/checkout@v2
 
       - name: Update Submodules
         run: |
-          sudo apt update && sudo apt install tree -y
-          git submodule update --init
+          sudo apt -qq update && sudo apt -qq install tree -y
+          # git submodule update --init > /dev/null
           pwd
           tree
 

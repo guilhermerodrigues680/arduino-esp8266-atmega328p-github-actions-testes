@@ -45,4 +45,5 @@ else:
     print('Sem resultados')
     exit(0)
 
+print('Erros na compilacao')
 exit(1)
