@@ -15,7 +15,8 @@ jobs:
         id: hello
         with:
           repository-github: guilhermerodrigues680/Interligando-NodeMCU-e-GoPro
-          path-ino-file: NodeMCUeGoPro/NodeMCUeGoPro.ino
+          path-ino-file: NodeMCUeGoPro
+          ino-file: NodeMCUeGoPro.ino
       
       # Use the output from the `hello` step
       - name: Get the output time

@@ -7,9 +7,13 @@ inputs:
     required: true
     default: 'None_repository'
   path-ino-file:  # id of input
-    description: 'Caminho do arquivo .ino'
+    description: 'Diretorio onde esta o arquivo .ino'
     required: true
     default: 'None_path_ino_file'
+  ino-file:  # id of input
+    description: 'Nome do arquivo .ino'
+    required: true
+    default: 'None_ino_file'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -19,3 +23,4 @@ runs:
   args:
     - ${{ inputs.repository-github }}
     - ${{ inputs.path-ino-file }}
+    - ${{ inputs.ino-file }}
