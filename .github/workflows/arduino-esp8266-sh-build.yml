@@ -1,0 +1,16 @@
+name: arduino-esp8266-sh-build.yml
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build-sh
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Compila o codigo
+        run: |
+        sudo chmod +x github-actions-with-sh/install-arduino-esp8266.sh
+        sudo github-actions-with-sh/install-arduino-esp8266.sh

@@ -1,0 +1,21 @@
+# action.yml
+name: 'Compilador Arduino e ESP8266'
+description: 'Compila códigos para Arduino e ESP8266'
+inputs:
+  repository-github:  # id of input
+    description: 'Repositorio que contém o codigo'
+    required: true
+    default: 'None_repository'
+  path-ino-file:  # id of input
+    description: 'Caminho do arquivo .ino'
+    required: true
+    default: 'None_path_ino_file'
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.repository-github }}
+    - ${{ inputs.path-ino-file }}
