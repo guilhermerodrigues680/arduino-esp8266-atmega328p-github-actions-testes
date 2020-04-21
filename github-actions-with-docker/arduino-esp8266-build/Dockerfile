@@ -13,12 +13,12 @@ RUN apt-get -q update && apt-get install -q -y wget xz-utils && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/Arduino/hardware/esp8266com/esp8266
-# > /dev/null 2>&1
+
 RUN apt-get -q update && apt-get install -q -y git python3 && \
     git clone https://github.com/esp8266/Arduino.git . && \
     git checkout 2.6.3 && \
     git submodule update --init && \
-    (cd tools && python3 get.py) && \
+    (cd tools && python3 get.py) > /dev/null 2>&1 && \
     apt-get -q clean -y && apt-get -q autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
