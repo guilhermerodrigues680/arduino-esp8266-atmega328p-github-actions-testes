@@ -40,6 +40,7 @@ if matchs:
         anotation_github = '::error file={},line={},col={}::{}'.format(match[0], match[1], match[2], match[4])
         str_error.append(anotation_github)
         print(anotation_github)
+        print('::warning::https://github.com/guilhermerodrigues680/Interligando-NodeMCU-e-GoPro/tree/0b1d1d1eb6f989c36106b0c422f36c7dee302fbf/NodeMCUeGoPro/NodeMCUeGoPro.ino#L45')
 
 else:
     print('Sem resultados')
