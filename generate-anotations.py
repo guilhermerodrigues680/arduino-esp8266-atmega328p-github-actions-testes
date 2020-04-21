@@ -35,12 +35,12 @@ if matchs:
     # print(matchs.group(2))
     print('Matchs: ')
     for match in matchs:
-        print(match)
-        str_error = []
-        anotation_github = '::error file={},line={},col={}::{}'.format(match[0], match[1], match[2], match[4])
+        # print(match)
+        # anotation_github = '::error file={},line={},col={}::{}'.format(match[0], match[1], match[2], match[4])
+        anotation_github = '::error file={},line={}::{}'.format(match[0], match[1], match[2], "Erro na compilacao: {}".format(match[4]))
         str_error.append(anotation_github)
         print(anotation_github)
-        print('::warning::https://github.com/guilhermerodrigues680/Interligando-NodeMCU-e-GoPro/tree/0b1d1d1eb6f989c36106b0c422f36c7dee302fbf/NodeMCUeGoPro/NodeMCUeGoPro.ino#L45')
+        # print('::warning::https://github.com/guilhermerodrigues680/Interligando-NodeMCU-e-GoPro/tree/0b1d1d1/NodeMCUeGoPro/NodeMCUeGoPro.ino#L45')
 
 else:
     print('Sem resultados')
