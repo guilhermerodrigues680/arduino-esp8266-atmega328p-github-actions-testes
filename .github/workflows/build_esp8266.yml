@@ -28,18 +28,18 @@ jobs:
           sudo tar -xf arduino-1.8.12-linux64.tar.xz
           cd arduino-1.8.12
           sudo ./install.sh
-          which arduino
-          ls -la $(which arduino) | grep 'arduino'
+          # which arduino
+          # ls -la $(which arduino) | grep 'arduino'
 
       # Instalação das placas ESP8266 no Arduino IDE
       - name: Instalar Placa ESP8266 no Arduino
         run: |
           mkdir -p /home/runner/Arduino/hardware/esp8266com
           cd /home/runner/Arduino/hardware/esp8266com
-          git clone https://github.com/esp8266/Arduino.git esp8266 > /dev/null
+          git clone https://github.com/esp8266/Arduino.git esp8266 --quiet
           cd esp8266
-          git checkout 2.6.3 > /dev/null
-          git submodule update --init > /dev/null
+          git checkout 2.6.3 --quiet
+          git submodule update --init --quiet
           cd tools
           python3 get.py > /dev/null
           echo "ESP8266 Instlado no Arduino IDE!"
