@@ -13,7 +13,7 @@ RUN apt-get -q update && apt-get install -q -y wget xz-utils && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/Arduino/hardware/esp8266com/esp8266
-
+# > /dev/null 2>&1
 RUN apt-get -q update && apt-get install -q -y git python3 && \
     git clone https://github.com/esp8266/Arduino.git . && \
     git checkout 2.6.3 && \
@@ -22,18 +22,18 @@ RUN apt-get -q update && apt-get install -q -y git python3 && \
     apt-get -q clean -y && apt-get -q autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
+# Return WORKDIR to /
+WORKDIR /
+
 # Print Sketchbook Default Location
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN arduino --get-pref | grep 'ske'
 
-# Set Sketchbook Default Location
-WORKDIR /root/Arduino
-
 # CMD [ "bash" ]
 
 # Copia o arquivo de código do repositório de ação para o WORKDIR atual
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Arquivo de código a ser executado quando o contêiner do docker é iniciado (`entrypoint.sh`)
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
