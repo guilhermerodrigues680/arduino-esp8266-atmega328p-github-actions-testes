@@ -12,5 +12,5 @@ jobs:
       
       - name: Compila o codigo
         run: |
-        sudo chmod +x github-actions-with-sh/install-arduino-esp8266.sh
-        sudo github-actions-with-sh/install-arduino-esp8266.sh
+          sudo chmod +x github-actions-with-sh/install-arduino-esp8266.sh
+          sudo github-actions-with-sh/install-arduino-esp8266.sh
