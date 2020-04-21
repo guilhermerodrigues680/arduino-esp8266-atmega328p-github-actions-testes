@@ -51,7 +51,7 @@ jobs:
           git submodule update --init
           printf "\n Instalando as Tools \n"
           cd tools
-          python3 get.py
+          python3 get.py > /dev/null
           printf "\n ESP8266 Instlado no Arduino IDE! \n"
 
       # Checkout para $GITHUB_WORKSPACE para o Actions acessar o repositorio
@@ -59,8 +59,8 @@ jobs:
 
       - name: Update Submodules
         run: |
-          apt update && apt install tree -y
-          git submodule update --init
+          sudo apt update && sudo apt install tree -y
+          # git submodule update --init
           pwd
           tree
 
