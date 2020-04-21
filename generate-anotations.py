@@ -38,7 +38,6 @@ if matchs:
         # print(match)
         # anotation_github = '::error file={},line={},col={}::{}'.format(match[0], match[1], match[2], match[4])
         anotation_github = '::error file={},line={}::{}'.format(match[0], match[1], match[2], "Erro na compilacao: {}".format(match[4]))
-        str_error.append(anotation_github)
         print(anotation_github)
         # print('::warning::https://github.com/guilhermerodrigues680/Interligando-NodeMCU-e-GoPro/tree/0b1d1d1/NodeMCUeGoPro/NodeMCUeGoPro.ino#L45')
 
