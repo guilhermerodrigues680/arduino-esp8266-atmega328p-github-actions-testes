@@ -11,4 +11,5 @@ jobs:
       run: docker pull guilhermerodrigues680/arduino-esp8266-build:latest
 
     - name: Run image
-      run: docker run -it guilhermerodrigues680/arduino-esp8266-build:latest
+      run: |
+        docker run guilhermerodrigues680/arduino-esp8266-build:latest arg1 arg2 arg3 arg4
