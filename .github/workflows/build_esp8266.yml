@@ -4,12 +4,12 @@
 name: Compilação
 
 on:
-  # push:
-  #   branches: [ master ]
-  # pull_request:
-  #   branches: [ master ]
-  # release:
-  #   types: [published, created, edited]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  release:
+    types: [published, created, edited]
 
 jobs:
   build:
@@ -64,40 +64,7 @@ jobs:
 
       # Compilando o codigo para o NodeMCU
       - name: Compliando o programa
-        run: |
-          mkdir -p __temp_comp
-          # arduino -v --board esp8266com:esp8266:nodemcu --verify $PATH_INO_FILE
-          arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino > __temp_comp/output.txt 2>&1
-
-          cd __temp_comp
-          grep -E '[a-zA-Z0-9]*:[0-9]*:[0-9]*:[[:blank:]]*[a-zA-Z0-9]*[[:blank:]]error:' output.txt > errors.txt
-
-          arquivo=()
-          linha=()
-          coluna=()
-          while IFS= read -r LINE; do
-              arquivo+=$(echo "$LINE" | cut -d ':' -f 1)
-              linha+=$(echo "$LINE" | cut -d ':' -f 2)
-              coluna+=$(echo "$LINE" | cut -d ':' -f 3)
-          done < errors.txt
-
-          for i in '$(seq "${#arquivo[@]}")'; do echo "${arquivo[i]} ${linha[i]} ${coluna[i]}"; done
-          for i in "$(seq 2)"; do echo "${arquivo[$i]} ${linha[$i]} ${coluna[$i]}"; done
-          
-          echo "${#arquivo[@]}"
-          seq "${#arquivo[@]}"
-          
-          
-          OUTPUT=$(arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino 2>&1)
-          ERROS=$(echo "$OUTPUT" | grep -E '[a-zA-Z0-9]*:[0-9]*:[0-9]*:[[:blank:]]*[a-zA-Z0-9]*[[:blank:]]error:')
-          echo $ERROS | cut -d ':' -f 1
-
-          arduino --board esp8266com:esp8266:nodemcu --verify NodeMCUeGoPro/NodeMCUeGoPro.ino > tempOutput.txt 2>&1 
-          grep -E '[a-zA-Z0-9]*:[0-9]*:[0-9]*:[[:blank:]]*[a-zA-Z0-9]*[[:blank:]]error:' tempOutput.txt
-
-          while IFS= read -r LINE; do
-              echo "12 $LINE"
-          done < tempOutput.txt
+        run: python3 generate-anotations.py
 
 
 
