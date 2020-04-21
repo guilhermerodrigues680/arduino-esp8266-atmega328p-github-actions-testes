@@ -29,6 +29,9 @@ WORKDIR /
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN arduino --get-pref | grep 'ske'
 
+# Return do default
+SHELL ["/bin/sh", "-c"]
+
 # CMD [ "bash" ]
 
 # Copia o arquivo de código do repositório de ação para o WORKDIR atual
