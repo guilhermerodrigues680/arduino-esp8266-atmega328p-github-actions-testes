@@ -25,6 +25,6 @@ jobs:
     - run: git branch
     - run: git tag v0.0.1-GHACTIONS
     - run: git remote -v
-    # - run: git push o
+    - run: git push origin v0.0.1-GHACTIONS
     # - run: git branch
     # - run: git branch
