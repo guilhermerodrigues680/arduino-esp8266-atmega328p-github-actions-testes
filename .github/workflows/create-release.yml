@@ -10,10 +10,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Comando
-      run: echo "${{ secrets.GITHUB_TOKEN }}"
+    # - name: Comando
+    #   run: echo "${{ secrets.GITHUB_TOKEN }}"
 
-    - run: sudo apt-get -q update && sudo apt-get -q install tree
-    - run: pwd && tree
-    - run: cd ~ && pwd && tree
-    - run: command -v git
+    # - run: sudo apt-get -q update && sudo apt-get -q install tree
+    # - run: pwd && tree
+    # - run: cd ~ && pwd && tree
+    # - run: command -v git
+
+    - run: git branch
+    - run: git tag -a v0.0.1-GHACTIONS
+    - run: git remote -v
+    # - run: git push o
+    # - run: git branch
+    # - run: git branch
