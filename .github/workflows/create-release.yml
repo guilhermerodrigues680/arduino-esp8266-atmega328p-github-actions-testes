@@ -23,7 +23,7 @@ jobs:
         git config --global user.email "bot-gh-actions@guilhermerodrigues680.com"
         git config --global user.name "bot-gh-actions"
     - run: git branch
-    - run: git tag -a v0.0.1-GHACTIONS
+    - run: git tag v0.0.1-GHACTIONS
     - run: git remote -v
     # - run: git push o
     # - run: git branch
