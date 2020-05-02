@@ -7,5 +7,13 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
 
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Comando
       run: echo "${{ secrets.GITHUB_TOKEN }}"
+
+    - run: sudo apt-get -q update && sudo apt-get -q install tree
+    - run: pwd && tree
+    - run: cd ~ && pwd && tree
+    - run: command -v git
